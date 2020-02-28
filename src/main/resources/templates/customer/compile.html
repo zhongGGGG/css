@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorate="main"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <TITLE>客户关系管理系统</TITLE>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link th:href="@{/localcss/crmlist.css}" href="../static/localcss/crmadd.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div layout:fragment="content">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>客户信息管理&nbsp; &gt; 客户信息 <i class="fa fa-user"> 联系人>编辑联系人</i></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form action="/customer/compileAdd"   method="post">
+                            <div class="clearfix"></div>
+                            <div class="form-horizontal form-label-left">
+                                <div class="item form-group">
+                                    <input type="hidden" name="lkmId" th:value="${cstLinkman.lkmId}">
+                                    <input type="hidden" name="custNo" th:value="${cstLinkman.cstCustomer.custNo}">
+                                    <input type="hidden" name="lkmCustName" th:value="${cstLinkman.lkmCustName}">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">姓名<span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="lkmName" type="text" th:value="${cstLinkman.lkmName}">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">性别 <span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="lkmSex" type="text" th:value="${cstLinkman.lkmSex}">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">职位 <span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="lkmPostion" type="text" th:value="${cstLinkman.lkmPostion}">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">办公电话 <span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="lkmTel" type="text" th:value="${cstLinkman.lkmTel}">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">手机 <span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="lkmMobile" type="text" th:value="${cstLinkman.lkmMobile}">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">备注 <span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="lkmMemo" type="text" th:value="${cstLinkman.lkmMemo}">
+                                    </div>
+                                </div>
+                                <div class="ln_solid "></div>
+                                <div class="form-group ">
+                                    <div class="col-md-6 col-md-offset-3 ">
+                                        <button id="send" type="submit" class="btn btn-success">保存</button>
+                                        <button type="button" class="btn btn-primary" id="back">返回</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script layout:fragment="js">
+    $(document).ready(function(){
+        $("#back").on("click",function(){
+            window.history.back();
+        });
+    });
+</script>
+</html>

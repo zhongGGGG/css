@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="main"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>客户信息管理</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            客户信息>历史信息<i class="fa fa-user">订单明细</i>
+                            <small>
+                                - 您可以通过搜索或者其他的筛选项对用户的信息进行编辑、删除等管理操作。^_^
+                            </small>
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form method="post" action="/ordersStat/edit" th:action="@{/ordersStat/edit}">
+                            <input type="hidden" name="pageIndex" value="1" id="fy"/>
+                            <ul>
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">订单编号</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="odrId" type="text" th:value="${orders.odrId}"
+                                                   class="form-control col-md-6 col-xs-12" value="">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">日期</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input name="odrDate" type="text" th:value="${orders.odrDate}"
+                                               class="form-control col-md-6 col-xs-12" value="">
+                                    </div>
+                                </div>
+                            </li>
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">送货地址</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="odrAddr" type="text" th:value="${orders.odrAddr}"
+                                                   class="form-control col-md-6 col-xs-12" value="">
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">状态</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="odrStatus" type="text" th:value="${orders.odrStatus}"
+                                                   class="form-control col-md-6 col-xs-12" value="">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">总金额(元)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="prodPrice" type="text" th:value="${products.prodPrice}"
+                                                   class="form-control col-md-6 col-xs-12" value="">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <p class="text-muted font-13 m-b-30"></p>
+                        <div id="datatable-responsive_wrapper">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/orders/save" th:href="@{/orders/save}"
+                                       class="btn btn-success btn-sm">关于</a>
+                                    <a id="back"
+                                       class="btn btn-success btn-sm">返回</a>
+                                    <table id="datatable-responsive"
+                                           class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed"
+                                           cellspacing="0" width="100%" role="grid"
+                                           aria-describedby="datatable-responsive_info" style="width: 100%;">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0"
+                                                aria-controls="datatable-responsive" rowspan="1" colspan="1"
+                                                aria-label="First name: activate to sort column descending"
+                                                aria-sort="ascending">
+                                                商品
+                                            </th>
+                                            <th class="sorting" tabindex="0"
+                                                aria-controls="datatable-responsive" rowspan="1" colspan="1"
+                                                aria-label="Last name: activate to sort column ascending">
+                                                数量
+                                            </th>
+                                            <th class="sorting" tabindex="0"
+                                                aria-controls="datatable-responsive" rowspan="1" colspan="1"
+                                                aria-label="Last name: activate to sort column ascending">
+                                               单位
+                                            </th>
+                                            <th class="sorting" tabindex="0"
+                                                aria-controls="datatable-responsive" rowspan="1" colspan="1"
+                                                aria-label="Last name: activate to sort column ascending">
+                                                单价(元)
+                                            </th>
+                                            <th class="sorting" tabindex="0"
+                                                aria-controls="datatable-responsive" rowspan="1" colspan="1"
+                                                aria-label="Last name: activate to sort column ascending">
+                                                金额(元)
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+<!--                                        //*@thymesVar id="userPager" type="org.springframework.data.domain.Page"*/-->
+                                            <td th:text="${products.prodName}">prodName</td>
+                                            <td th:text="${ordersLine.oddCount}">oddCount</td>
+                                            <td th:text="${products.prodUnit}">prodUnit</td>
+                                            <td th:text="${products.prodPrice}">prodPrice</td>
+                                            <td th:text="${products.prodPrice}">prodPrice</td>
+
+                                        </tbody>
+                                    </table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script layout:fragment="js">
+    $(document).ready(function(){
+        $("#back").on("click",function(){
+            window.history.back();
+        });
+    });
+</script>
+<script layout:fragment="js">
+    function page_nav(dom,index){
+        $("#fy").val(index);
+        $(dom).submit();
+    }
+
+    function doDel(obj,usrId){
+        if(confirm("你确定需要删除该用户信息吗？")){
+            $.ajax({
+                type:"POST",
+                url:"/chance/del",
+                data:"usrId="+usrId,
+                dataType:"json",
+                success:function(data){
+                    if(data.delResult == "true"){//删除成功：移除删除行
+                        alert("删除成功");
+                        $(obj).parents("tr").remove();
+                    }
+                },
+                error:function(data){
+                    alert("对不起，删除失败");
+                }
+            });
+        }
+    }
+</script>
+</html>

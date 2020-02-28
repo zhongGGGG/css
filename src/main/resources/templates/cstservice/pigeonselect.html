@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorate="main"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <title>服务管理</title>
+    <link th:href="@{/localcss/crmlist.css}" href="../static/localcss/crmadd.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>2 客户服务管理>服务归档 <i class="fa fa-user"></i></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="clearfix"></div>
+                        <form class="form-horizontal form-label-left" th:action="@{/cstservice/feeupdates}" action="/cstservice/feeupdates" method="post">
+                            <div class="form-horizontal form-label-left">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">编号<span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                               data-validate-length-range="20"
+                                               data-validate-words="1" name="svrId" th:value="${CstService.svrId}" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-horizontal form-label-left">
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">服务类型<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                   data-validate-length-range="20"
+                                                   data-validate-words="1" name="svrType" th:value="${CstService.svrType}" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-horizontal form-label-left">
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">概要<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                       data-validate-length-range="20"
+                                                       data-validate-words="1" name="svrTitle" th:value="${CstService.svrTitle}" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="form-horizontal form-label-left">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">客户<span
+                                                        class="required">*</span></label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                           data-validate-length-range="20"
+                                                           data-validate-words="1" name="svrCustName" th:value="${CstService.svrCustName}" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-horizontal form-label-left">
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">状态<span
+                                                            class="required">*</span></label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                               data-validate-length-range="20"
+                                                               data-validate-words="1" name="svrStatus" th:value="${CstService.svrStatus}" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-horizontal form-label-left">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">服务请求<span
+                                                                class="required">*</span></label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                                   data-validate-length-range="20"
+                                                                   data-validate-words="1" name="svrRequest" th:value="${CstService.svrRequest}" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-horizontal form-label-left">
+                                                        <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">创建人<span
+                                                                    class="required">*</span></label>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                                       data-validate-length-range="20"
+                                                                       data-validate-words="1" name="svrCreateBy" th:value="${CstService.svrCreateBy}" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-horizontal form-label-left">
+                                                            <div class="item form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">创建时间<span
+                                                                        class="required">*</span></label>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                                           data-validate-length-range="20"
+                                                                           data-validate-words="1" name="svrCreateDate" th:value="${CstService.svrCreateDate}" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-horizontal form-label-left">
+                                                                <div class="item form-group">
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">分配给<span
+                                                                            class="required">*</span></label>
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                        <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                                               data-validate-length-range="20"
+                                                                               data-validate-words="1" name="svrDueTo" th:value="${CstService.svrDueTo}" type="text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-horizontal form-label-left">
+                                                                    <div class="item form-group">
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">分配时间<span
+                                                                                class="required">*</span></label>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <input class="form-control col-md-7 col-xs-12" readonly="readonly"
+                                                                                   data-validate-length-range="20"
+                                                                                   data-validate-words="1" name="svrDueDate" th:value="${CstService.svrDueDate}" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item form-group">
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="lstDelay"> 服务处理 <span class="required">*</span></label>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <input id="lstDelay" class="form-control col-md-7 col-xs-12"
+                                                                                   data-validate-length-range="10" data-validate-words="1" name="svrDeal" required="required"
+                                                                                   type="text" th:value="${CstService.svrDeal}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">处理人</label>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <input name="svrCreateBy" type="text" th:value="${session.user.usrName}"
+                                                                                   class="form-control col-md-6 col-xs-12" value="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">处理时间</label>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <input name="svrDealDate" type="text" th:value="${CstService.svrDealDate}"
+                                                                                   class="form-control col-md-6 col-xs-12" value="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">处理结果</label>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <input name="svrResult" type="text" th:value="${CstService.svrResult}"
+                                                                                   class="form-control col-md-6 col-xs-12" value="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item form-group">
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">满意度 <span
+                                                                                class="required">*</span></label>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <select class="form-control" required="required" name="svrSatisfy" th:value="${CstService.svrSatisfy}">
+                                                                                <option value="2">▲▲</option>
+                                                                                <option value="1">▲</option>
+                                                                                <option value="2">▲▲</option>
+                                                                                <option value="3">▲▲▲</option>
+                                                                                <option value="4">▲▲▲▲</option>
+                                                                                <option value="5">▲▲▲▲▲</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">保存</button>
+                                    <button type="button" class="btn btn-primary" id="back">返回</button>
+                                    <br/><br/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script layout:fragment="js">
+    $(document).ready(function(){
+        $("#back").on("click",function(){
+            window.history.back();
+        });
+    });
+</script>
+</html>

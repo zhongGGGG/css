@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="main"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>客户等级管理</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            客户等级管理 <i class="fa fa-user"></i>
+                            <small>
+                                - 您可以通过搜索或者其他的筛选项对用户的信息进行编辑、删除等管理操作。^_^
+                            </small>
+
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form method="post" action="/customerbasics/add_dict" th:action="@{/customerbasics/add_dict}">
+
+                            <ul>
+
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">值</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="dictItem" type="text"
+                                                   class="form-control col-md-6 col-xs-12" value="" >
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <button type="submit" class="btn btn-primary"> 保存</button>
+                                </li>
+
+                                    <button  type="button" id="back"class="btn btn-primary"> 返回</button>
+
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script layout:fragment="js">
+    function page_nav(dom,index){
+        $("#fy").val(index);
+        $(dom).submit();
+    }
+    $(document).ready(function(){
+        $("#back").on("click",function(){
+            window.history.back();
+        });
+    });
+
+    function doDel(obj,usrId){
+        if(confirm("你确定需要删除该用户信息吗？")){
+            $.ajax({
+                type:"GET",
+                url:"/user/del",
+                data:"usrId="+usrId,
+                dataType:"json",
+                success:function(data){
+                    if(data.delResult == "true"){//删除成功：移除删除行
+                        alert("删除成功");
+                        $(obj).parents("tr").remove();
+                    }
+                },
+                error:function(data){
+                    alert("对不起，删除失败");
+                }
+            });
+        }
+    }
+
+
+    $(document).ready(function(){
+        $("#back").on("click",function(){
+            window.history.back();
+        });
+    });
+</script>
+</html>
